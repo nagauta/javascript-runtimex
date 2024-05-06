@@ -10,6 +10,7 @@ import {
   export interface Database {
     person: PersonTable
     pet: PetTable
+    todo: TodoTable
   }
   
   // This interface describes the `person` table to Kysely. Table
@@ -59,14 +60,23 @@ import {
   export type Person = Selectable<PersonTable>
   export type NewPerson = Insertable<PersonTable>
   export type PersonUpdate = Updateable<PersonTable>
-  
+
   export interface PetTable {
     id: Generated<number>
     name: string
     owner_id: number
     species: 'dog' | 'cat'
   }
-  
   export type Pet = Selectable<PetTable>
   export type NewPet = Insertable<PetTable>
   export type PetUpdate = Updateable<PetTable>
+
+  export interface TodoTable {
+    id: Generated<number>
+    title: string
+    completed: boolean
+  }
+  
+  export type Todo = Selectable<TodoTable>
+  export type NewTodo = Insertable<TodoTable>
+  export type TodoUpdate = Updateable<TodoTable>
